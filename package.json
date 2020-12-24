@@ -1,0 +1,16 @@
+{
+  "name": "bptf-trade-url",
+  "version": "1.0.0",
+  "description": "Get trade offer URLs from backpack.tf users",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hhanuska",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.5"
+  }
+}
