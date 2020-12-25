@@ -44,20 +44,28 @@ export async function fromClassifieds (url, cookies = null) {
             }
         });
 
-        const $ = cheerio.load(response.data);
-
-        const urls = {};
-
-        $('.user-handle').each((i, e) => {
-            const steamid = $(e).children().first().data('id');
-
-            const url = $(e).children().first().data('offers-params');
-
-            urls[steamid] = url ? url : null;
-        })
-
-        return urls;
+        return _getUrls(response.data);
     } catch (err) {
         return err;
     }
+}
+
+/**
+ * You can use this function if you already request a page to avoid usless requests
+ * @param {String} html page html
+ */
+export function _getUrls (html) {
+    const $ = cheerio.load(html);
+
+    const urls = {};
+
+    $('.user-handle').each((i, e) => {
+        const steamid = $(e).children().first().data('id');
+
+        const url = $(e).children().first().data('offers-params');
+
+        urls[steamid] = url ? url : null;
+    })
+
+    return urls;
 }
